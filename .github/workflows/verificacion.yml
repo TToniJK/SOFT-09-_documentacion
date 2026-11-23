@@ -1,0 +1,18 @@
+name: Verificacion del Repositorio
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  validar-estructura:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos obligatorios del laboratorio
+        run: |
+          ls -la
+          test -f README.md && echo "README.md verificado correctamente"
+          test -f mi-archivo.js && echo "mi-archivo.js verificado correctamente"
